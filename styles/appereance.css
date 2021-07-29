@@ -17,7 +17,7 @@ h1 {
 #container {
     width: 500px;
     height: 500px;
-    border: 2px solid red;
+    border: 2px solid rgba(0,0,0,0.5);
     margin-top: 5rem;
     display: grid;
 }
