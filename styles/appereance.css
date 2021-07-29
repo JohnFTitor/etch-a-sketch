@@ -1,0 +1,23 @@
+html {
+    font-size: 10px;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-top: 5rem;
+}
+
+#container {
+    width: 500px;
+    height: 500px;
+    border: 2px solid red;
+    margin-top: 5rem;
+    display: grid;
+}
