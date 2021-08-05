@@ -33,8 +33,8 @@ function clear(){
 
 generateGrid(16);
 
-const button = document.querySelector("#generate");
-button.addEventListener("click", () => {
+const generateButton = document.querySelector("#generate");
+generateButton.addEventListener("click", () => {
     clear();
     while (true) {
         let squares = prompt("Enter a number of squares per side between 0 and 100", "16");
@@ -45,4 +45,12 @@ button.addEventListener("click", () => {
         }
     }
 });
+
+const clearButton = document.querySelector("#clear");
+clearButton.addEventListener("click", () => {
+    pixels.forEach(function (pixel){
+        pixel.style.backgroundColor = "white";
+    })
+})
+
 

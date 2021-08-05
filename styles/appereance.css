@@ -9,6 +9,18 @@ body {
     justify-content: center;
 }
 
+#playGround {
+    display: flex;
+    width: 750px;
+    justify-content: space-between;
+}
+
+#buttons {
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+}
+
 h1 {
     font-size: 5rem;
     margin-top: 5rem;
@@ -23,7 +35,7 @@ h1 {
 }
 
 button {
-    margin-top: 5rem;
+    margin-top: 4rem;
     width: 20rem;
     height: 5rem;
     color: white;
