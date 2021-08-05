@@ -17,11 +17,7 @@ function generateGrid(squares) {
     window.pixels = document.querySelectorAll(".pixels");
     // console.log(pixels);
     
-    pixels.forEach(function (pixel) {
-        pixel.addEventListener("mouseover", () => {
-            pixel.style.backgroundColor = "black";
-        })
-    })
+    pixels.forEach(drawRGB);
 }
 
 function clear(){
@@ -30,6 +26,24 @@ function clear(){
         container.removeChild(pixel);
     })
 }
+
+function drawBlack(pixel) {
+    pixel.addEventListener("mouseover", () => {
+        pixel.style.backgroundColor = "black";
+    })
+}
+
+function drawRGB(pixel){
+    pixel.addEventListener("mouseover", () => {
+        pixel.style.backgroundColor = `rgb(${randomRGB()}, ${randomRGB()}, ${randomRGB()})`;
+    })    
+}
+
+function randomRGB(){
+    return Math.floor(Math.random() * 250);
+}
+
+
 
 generateGrid(16);
 
