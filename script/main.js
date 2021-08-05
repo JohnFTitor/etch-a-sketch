@@ -34,14 +34,23 @@ function drawBlack(pixel) {
 }
 
 function drawRGB(pixel){
+    let h = Math.floor(Math.random()*360);
+    let s = Math.floor(Math.random()*100);
+    let l = 90;
     pixel.addEventListener("mouseover", () => {
-        pixel.style.backgroundColor = `rgb(${randomRGB()}, ${randomRGB()}, ${randomRGB()})`;
+        pixel.style.backgroundColor = `hsl(${h}, ${s}%, ${l}%)`;
+        if (pixel.style.backgroundColor != "white") {
+            pixel.addEventListener("mouseover", () => {
+                if(l != 0){
+                    l -= 2;
+                }
+                pixel.style.backgroundColor = `hsl(${h}, ${s}%, ${l}%)`;
+            })
+        }
     })    
 }
 
-function randomRGB(){
-    return Math.floor(Math.random() * 250);
-}
+
 
 
 
