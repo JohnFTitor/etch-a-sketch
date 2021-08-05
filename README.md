@@ -1,1 +1,1 @@
-28/07/2021: Setting up the files
+28/07/2021: Set all the base structure of the project, working as required by the Odin Project. That is, to draw in the sketch when hovering, and changing the cells when "Generate" is clicked, through a prompt message. 

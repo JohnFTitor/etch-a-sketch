@@ -2,7 +2,7 @@ const container = document.querySelector("#container");
 
 
 function generateGrid(squares) {
-    
+
     container.style.setProperty("grid-template-columns", "repeat(" + squares + ", 1fr)");
     container.style.setProperty("grid-template-rows", "repeat(" + squares + ", 1fr)");
     
