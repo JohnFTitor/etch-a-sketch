@@ -1,11 +1,13 @@
 const container = document.querySelector("#container");
 let currentPen = drawBlack;
 
+//sets the amount of rows and columns based on the squares per side
 function generateGrid(squares) {
 
     container.style.setProperty("grid-template-columns", "repeat(" + squares + ", 1fr)");
     container.style.setProperty("grid-template-rows", "repeat(" + squares + ", 1fr)");
     
+    //creates the ammount of divs necessary to fill the entire grid
     for (let i = 1; i <= squares * squares; i++) {
         const div = document.createElement("div");
         div.classList.add("pixels");
@@ -14,16 +16,13 @@ function generateGrid(squares) {
         container.appendChild(div);
     }
     
+    //creates a nodelist as a global variable, of all the squares in the grid
     window.pixels = document.querySelectorAll(".pixels");
 
+    //currentPen points to the function that determine the behavior of the pen
     pixels.forEach(currentPen);
 }
 
-function clear(){
-    pixels.forEach(function (pixel){
-        container.removeChild(pixel);
-    })
-}
 
 function drawBlack(pixel) {
     pixel.removeEventListener("mouseover", hslEvent);
@@ -41,12 +40,15 @@ function drawHSL(pixel){
     currentPen = drawHSL;    
 }
 
+
 function hslEvent(){
     let h = Math.floor(Math.random()*360);
     let s = Math.floor(Math.random()*100);
     let l = 70;
     this.style.backgroundColor = `hsl(${h}, ${s}%, ${l}%)`;
     if (this.style.backgroundColor != "white") {
+        //Once it has a color, removes the eventListener to manipulate the hsl values
+        //in order to make it darker at each mouseover
         this.removeEventListener("mouseover", hslEvent);
         this.addEventListener("mouseover", () => {
             if(l != 0){
@@ -57,6 +59,12 @@ function hslEvent(){
     } 
 }
 
+
+function clear(){
+    pixels.forEach(function (pixel){
+        container.removeChild(pixel);
+    })
+}
 
 generateGrid(16);
 
