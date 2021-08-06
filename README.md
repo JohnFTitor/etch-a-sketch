@@ -1,1 +1,3 @@
 28/07/2021: Set all the base structure of the project, working as required by the Odin Project. That is, to draw in the sketch when hovering, and changing the cells when "Generate" is clicked, through a prompt message. 
+
+05/08/2021: Added some useful logic, like a slider to change the grid values, a multicolor pen and buttons to change between the black default pen and the multicolor pen. It was a good practice to understand eventListeners a little bit more, specially in how they behave when they're nested. Still don't know how to make it work only when holding click, but I'll check on that later. There are still things that can be added, but I'll save that work for another time.
