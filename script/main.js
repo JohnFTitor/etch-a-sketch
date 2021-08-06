@@ -1,5 +1,5 @@
 const container = document.querySelector("#container");
-
+let currentPen = drawBlack;
 
 function generateGrid(squares) {
 
@@ -15,42 +15,51 @@ function generateGrid(squares) {
     }
     
     window.pixels = document.querySelectorAll(".pixels");
-    // console.log(pixels);
-    
-    pixels.forEach(drawRGB);
+
+    pixels.forEach(currentPen);
 }
 
 function clear(){
     pixels.forEach(function (pixel){
-        pixel.style.backgroundColor = "white";
         container.removeChild(pixel);
     })
 }
 
 function drawBlack(pixel) {
-    pixel.addEventListener("mouseover", () => {
-        pixel.style.backgroundColor = "black";
-    })
+    pixel.removeEventListener("mouseover", hslEvent);
+    pixel.addEventListener("mouseover", blackEvent);
+    currentPen = drawBlack;
 }
 
-function drawRGB(pixel){
+function blackEvent(){
+    this.style.backgroundColor = "black";
+} 
+
+function drawHSL(pixel){
+    pixel.removeEventListener("mouseover", blackEvent);
+    pixel.addEventListener("mouseover", hslEvent);
+    currentPen = drawHSL;    
+}
+
+function hslEvent(){
     let h = Math.floor(Math.random()*360);
     let s = Math.floor(Math.random()*100);
     let l = 70;
-    pixel.addEventListener("mouseover", () => {
-        pixel.style.backgroundColor = `hsl(${h}, ${s}%, ${l}%)`;
-        if (pixel.style.backgroundColor != "white") {
-            pixel.addEventListener("mouseover", () => {
-                if(l != 0){
-                    l -= 2;
-                }
-                pixel.style.backgroundColor = `hsl(${h}, ${s}%, ${l}%)`;
-            })
-        }
-    })    
+    this.style.backgroundColor = `hsl(${h}, ${s}%, ${l}%)`;
+    if (this.style.backgroundColor != "white") {
+        this.removeEventListener("mouseover", hslEvent);
+        this.addEventListener("mouseover", () => {
+            if(l != 0){
+                l -= 8;
+            }
+            this.style.backgroundColor = `hsl(${h}, ${s}%, ${l}%)`;
+        })
+    } 
 }
 
+
 generateGrid(16);
+
 
 const generateButton = document.querySelector("#generate");
 generateButton.addEventListener("click", () => {
@@ -71,7 +80,6 @@ const clearButton = document.querySelector("#clear");
 clearButton.addEventListener("click", () => {
     pixels.forEach(function (pixel){
         pixel.style.backgroundColor = "white";
-        drawRGB(pixel);
     })
 })
 
@@ -87,6 +95,17 @@ generateSlider.onchange = function () {
     clear();
     generateGrid(this.value);
 }
+
+const blackPen = document.querySelector("#drawBlack");
+blackPen.addEventListener("click", () => {
+    pixels.forEach(drawBlack);
+})
+
+const multicolorPen = document.querySelector("#drawHSL");
+multicolorPen.addEventListener("click", () => {
+    pixels.forEach(drawHSL);
+})
+
 
 
 
