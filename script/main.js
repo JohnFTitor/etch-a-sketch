@@ -73,6 +73,7 @@ const clearButton = document.querySelector("#clear");
 clearButton.addEventListener("click", () => {
     pixels.forEach(function (pixel){
         pixel.style.backgroundColor = "white";
+        drawRGB(pixel);
     })
 })
 
