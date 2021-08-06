@@ -51,3 +51,8 @@ table {
 input:focus-visible {
 	appearance: none;
 }
+
+#generateSlider {
+	-webkit-appearance: none;
+	appearance: none;
+}

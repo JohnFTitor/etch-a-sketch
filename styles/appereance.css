@@ -19,7 +19,41 @@ body {
     margin-top: 5rem;
     display: flex;
     flex-direction: column;
+    width: 200px;
 }
+
+#slidecontainer {
+    margin-top: 3rem;
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#squares {
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+#generateSlider {
+    margin: 0;
+    width: 100%;
+    height: 1.2rem;
+    background-color: black;
+    outline-color: none;
+}
+
+#generateSlider::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    width: 25px; /* Set a specific slider handle width */
+    height: 25px; /* Slider handle height */
+    border-radius: 50%;
+    background: purple; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
 
 h1 {
     font-size: 5rem;

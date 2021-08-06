@@ -50,17 +50,13 @@ function drawRGB(pixel){
     })    
 }
 
-
-
-
-
 generateGrid(16);
 
 const generateButton = document.querySelector("#generate");
 generateButton.addEventListener("click", () => {
     clear();
     while (true) {
-        let squares = prompt("Enter a number of squares per side between 0 and 100", "16");
+        let squares = prompt("Enter a number of squares per side between 1 and 100", "16");
         squares = parseInt(squares, 10)
         if (squares != NaN && squares > 0 && squares <= 100) {
             generateGrid(squares);
@@ -76,5 +72,19 @@ clearButton.addEventListener("click", () => {
         drawRGB(pixel);
     })
 })
+
+const generateSlider = document.querySelector("#generateSlider");
+const squaresLabel = document.querySelector("#squares");
+squaresLabel.textContent = "Squares per side: " + generateSlider.value;
+
+generateSlider.oninput = function () {
+    squaresLabel.textContent = "Squares per side: " + this.value;
+}
+
+generateSlider.onchange = function () {
+    clear();
+    generateGrid(this.value);
+}
+
 
 
