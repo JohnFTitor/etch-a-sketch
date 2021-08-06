@@ -60,6 +60,8 @@ generateButton.addEventListener("click", () => {
         squares = parseInt(squares, 10)
         if (squares != NaN && squares > 0 && squares <= 100) {
             generateGrid(squares);
+            squaresLabel.textContent = "Squares per side: " + squares;
+            generateSlider.value = squares;
             break;
         }
     }
